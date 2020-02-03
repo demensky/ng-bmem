@@ -1,5 +1,5 @@
 {
-    "name": "@tinkoff/angular-open-source-starter",
+    "name": "ng-bmem",
     "version": "1.0.0",
     "scripts": {
         "ng": "ng",
@@ -7,7 +7,7 @@
         "start:ssr": "npm run build:demo:ssr && npm run serve:ssr",
         "start:prerender": "npm run build:demo:prerender && npm run serve:prerender",
         "build": "ng build",
-        "build:schematics": "tsc -p tsconfig.schematics.json",
+        "postbuild": "node scripts/postbuild.js",
         "build:demo:client": "ng run demo:build",
         "build:demo:server": "ng run demo:server",
         "build:demo:ssr": "npm run build:demo:client && npm run build:demo:server && npm run compile:server",
@@ -18,35 +18,24 @@
         "generate:prerender": "node dist/demo/ssr/prerender",
         "test": "ng test",
         "posttest": "node scripts/coveralls.js",
-        "preadd": "npm run build:schematics",
-        "add": "schematics ./schematics/collection.json:library-starter --debug=false",
-        "postadd": "git add ./projects",
         "lint": "ng lint",
         "typecheck": "tsc --noEmit --skipLibCheck",
         "release": "standard-version",
         "release:patch": "npm run release -- --release-as patch",
         "release:minor": "npm run release -- --release-as minor",
         "release:major": "npm run release -- --release-as major",
-        "publish": "npm run build:all && npm publish:all"
+        "publish": "npm run build && npm publish ./dist/ng-bmem"
     },
-    "description": "This is a template project to develop, create and open-source Angular libraries with demos",
-    "keywords": [
-        "angular",
-        "ng",
-        "workspace",
-        "library",
-        "starter",
-        "tinkoff"
-    ],
-    "license": "Apache-2.0",
-    "authors": [
-        "Roman Sedov <r.sedov@tinkoff.ru>",
-        "Alex Inkin <a.inkin@tinkoff.ru>"
-    ],
-    "repository": "https://github.com/TinkoffCreditSystems/angular-library-starter",
-    "bugs": "https://github.com/TinkoffCreditSystems/angular-library-starter/issues",
-    "homepage": "https://github.com/TinkoffCreditSystems/angular-library-starter#README",
-    "schematics": "./schematics/collection.json",
+    "description": "",
+    "keywords": ["angular", "ng"],
+    "license": "MIT",
+    "author": {
+        "name": "Dmitry Demensky",
+        "email": "dmitry@demensky.com"
+    },
+    "repository": "https://github.com/demensky/ng-bmem",
+    "bugs": "https://github.com/demensky/ng-bmem/issues",
+    "homepage": "https://github.com/demensky/ng-bmem#README",
     "dependencies": {
         "@angular/animations": "^7.2.15",
         "@angular/common": "^7.2.15",
@@ -111,10 +100,7 @@
         }
     },
     "lint-staged": {
-        "*.{js,ts,html,md,less,json}": [
-            "prettier --write",
-            "git add"
-        ],
+        "*.{js,ts,html,md,less,json}": ["prettier --write", "git add"],
         "*.ts": "tslint"
     },
     "standard-version": {

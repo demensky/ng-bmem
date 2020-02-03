@@ -1,0 +1,17 @@
+{
+    "name": "ng-bmem",
+    "version": "1.0.0",
+    "peerDependencies": {
+        "@angular/core": ">=6.0.0"
+    },
+    "description": "",
+    "keywords": ["angular", "ng"],
+    "license": "MIT",
+    "author": {
+        "name": "Dmitry Demensky",
+        "email": "dmitry@demensky.com"
+    },
+    "repository": "https://github.com/demensky/ng-bmem",
+    "bugs": "https://github.com/demensky/ng-bmem/issues",
+    "homepage": "https://github.com/demensky/ng-bmem#README"
+}

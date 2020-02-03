@@ -83,7 +83,41 @@
                     }
                 }
             }
+        },
+        "ng-bmem": {
+            "projectType": "library",
+            "root": "projects/ng-bmem",
+            "sourceRoot": "projects/ng-bmem/src",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "options": {
+                        "tsConfig": "projects/ng-bmem/tsconfig.lib.json",
+                        "project": "projects/ng-bmem/ng-package.json"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "projects/ng-bmem/src/test.ts",
+                        "tsConfig": "projects/ng-bmem/tsconfig.spec.json",
+                        "karmaConfig": "projects/ng-bmem/karma.conf.js",
+                        "codeCoverage": true,
+                        "browsers": "ChromeHeadless"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "projects/ng-bmem/tsconfig.lib.json",
+                            "projects/ng-bmem/tsconfig.spec.json"
+                        ],
+                        "exclude": ["**/node_modules/**"]
+                    }
+                }
+            }
         }
     },
-    "defaultProject": "demo"
+    "defaultProject": "ng-bmem"
 }
